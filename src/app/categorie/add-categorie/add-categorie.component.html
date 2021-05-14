@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <h1>Gestion Catégorie</h1>
+  </mat-toolbar>
+  <div style="overflow-y:scroll ;" class="col-md-12 col-ms-offset-2">
+    <form [formGroup]="this.crudApi.formData" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="id" id="id">
+        <div class="form-group col-md-6">
+        <label>Code </label>
+        <input type="text" class="form-control" formControlName="code" id="code" readonly>
+      </div>
+      <div class="form-group">
+        <label>Libelle</label>
+        <input type="text" class="form-control" formControlName="libelle" id="libelle" placeholder="Libelle Catégorie">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+        <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+     </div>
+   </form>
+  </div>
+  

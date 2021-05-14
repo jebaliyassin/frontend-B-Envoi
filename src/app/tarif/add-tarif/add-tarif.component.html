@@ -1,0 +1,71 @@
+<mat-toolbar color="primary">
+   
+  <div>
+  <h1>Tarification</h1> 
+  </div>
+  
+</mat-toolbar>
+<form [formGroup]="this.service.formData" (ngSubmit)="onSubmit()">
+
+<input type="hidden"  formControlName="id" id="id">
+
+    <div class="form-group">
+  <label>Code </label>
+  <input type="text" class="form-control" formControlName="code" id="code"  readonly>
+    </div>
+ 
+  <div class="form-group col-md-6">
+    <label>Type Courrier : </label>
+    <select class="form-control" formControlName="typecourrier" id="typecourrier" (keyup)="nbreTarif()">
+    <option value="0">-Select-</option>
+    <option *ngFor="let item of this.typecourrierList" value="{{item.code}}">{{item.libelle}}</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label>Destination : </label>
+    <select class="form-control" formControlName="codedes" id="codedes"
+    (keyup)="nbreTarif()">
+    <option value="0">-Select-</option>
+    <option *ngFor="let item of this.destinationList" value="{{item.code}}">{{item.libelle}}</option>
+    </select>
+  </div>
+<hr>
+ <table class="table table-borderless">
+    <thead class="thead-light">
+      <th>Ligne </th>
+      <th>Du </th>
+      <th>Au </th>
+ 
+      <th>Montant</th>
+        <th>
+        <a class="btn btn-sm btn-success text-white" (click)="AddData(null,1)"><i class="fa fa-plus"></i>Ajouter </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngIf="service.list.length==0"  [class.text-danger]="!isValid && service.list.length ==0">
+        <td class="font-italic text-center" colspan="5">
+          Aucune Ligne sélectionnée ...
+        </td>
+      </tr>
+  <tr *ngFor="let item of service.list | paginate: { itemsPerPage: 10, currentPage: p };let i=index;">
+    <td>{{item.ligne}}</td> 
+  <td>{{item.deb}}</td>
+  <td>{{item.fin}}</td>
+  <td>{{item.montant}}</td>
+  <td>
+      <a class="btn btn-sm btn-info text-white" (click)="AddData(i,1)"><i class="fa fa-pencil"></i></a>
+      <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDelete(item,item.id,i)"><i class="fa fa-trash"></i></a>
+  </td>
+</tr>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <div class="form-group">
+  
+    <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+   
+    <a class="btn btn-outline-dark ml-1" routerLink="/tarifs"><i class="fa fa-plus-square"></i> Liste </a>
+  </div>
+</form> 
+
+
+

@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">
+    <h1>
+     Liste Tarif
+    </h1>
+    
+  </mat-toolbar>
+  <div>
+<input type="text" [(ngModel)]="SearchText" class="form-control bg-light border-0 small" placeholder="Recherche..." aria-label="Search" aria-describedby="basic-addon2">
+<table class="table table-hover">
+<thead class="thead-light">
+<th>Code</th>
+<th>TypeCourrier</th>
+<th>Destination</th>
+<th>Du</th>
+<th>AU</th>
+<th>montant</th>
+<th>
+    <a class="btn btn-outline-success" (click)="newtarif()"><i class="fa fa-plus-square"></i>
+        Create New</a></th>
+</thead>
+<tbody>
+<tr *ngFor="let item of list | paginate: { itemsPerPage: 10, currentPage: p }">
+ <td>{{item.code}}</td>
+<td>{{item.libtypecourrier}}</td>
+<td>{{item.libcodedes}}</td>
+<td>{{item.deb}}</td>
+<td>{{item.fin}}</td>
+
+<td>{{item.montant}}</td>
+
+<td>
+<a class="btn text-danger" (click)="onDelete(item.id)"><i class="fa fa-trash fa-lg"></i> </a>
+<a class="btn text-danger" (click)="onSelect(item)"><i class="fa fa-pencil fa-lg"></i> </a>
+</td>
+</tr>
+<div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite"></div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"></ul></div></div></div>
+</tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>   
+
+
+
+
+
+
+
+

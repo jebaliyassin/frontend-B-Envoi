@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button >
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+      Liste Agent
+    </div>
+
+  </mat-toolbar>
+ <div class="pricing-header mx-auto">
+   <div class="table-responsive">
+    <table class="table table-bordered table-responsive-sm table-responsive-md
+   table-responsive-lg">
+    <thead>
+    <tr>
+     <th scope="col">Matricule</th>  
+     <th scope="col">Nom</th>
+    <th scope="col">Grade</th>
+    <th scope="col">Agence </th>
+    <th class="text-center" scope="col">Action</th>
+    <th>
+      <a class="btn btn-outline-success" (click)="addAgent()">
+        <i class="fa fa-plus-square"></i> Create New</a>
+  </th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr *ngFor="let item of crudApi.list | paginate: { itemsPerPage: 5, currentPage: p } ">
+        <td>{{item.mat}}</td>
+        <td>{{item.nom}}</td>   
+     <td>{{item.libgrade}}</td>
+    <td>{{item.libres}}</td>
+
+
+    <td><button class="btn btn-warning"  (click) = "selectData(item)">
+      <i class="fa fa-pencil-square-o" ></i></button></td>
+   <td><button class="btn btn-danger" (click) = "removeData(item.id)">
+      <i class="fa fa-trash-o"></i></button></td>
+       </tr>
+         </tbody>
+         </table>
+         </div>
+         <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+       </div>

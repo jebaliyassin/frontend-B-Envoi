@@ -1,0 +1,86 @@
+<div>
+  <h1>Depot</h1> 
+  </div>
+  
+
+<form [formGroup]="this.service.formData" >
+<input type="hidden"  formControlName="id" id="id">
+<div class="form-group col-md-12">
+  <label><strong>Num Depot  :</strong> </label>
+  <input  type="text"  class="form-control" formControlName="numero" id="numero" readonly>
+</div>
+<div class="form-group col-md-6">
+    <label>Date</label>
+    <input  type="date" min="{{Date}}" class="form-control" formControlName="date_depot" id="date_depot">
+  </div>
+
+  
+  <div class="form-group col-md-6">
+    <label>Client </label>
+    <select class="form-control" formControlName="code" id="code">
+    <option value="0">-Select-</option>
+    <option *ngFor="let item of this.clientList" value="{{item.libelle}}">{{item.libelle}}</option>
+    </select>
+  </div>
+  
+  <div class="form-group col-md-6">
+    <label><strong>Agent :</strong> </label>
+    <input  type="text"  class="form-control" formControlName="mat" id="mat">
+  </div>
+  <div class="form-group col-md-6">
+    <label><strong>Destinataire :</strong> </label>
+    <input  type="text"  class="form-control" formControlName="destinataire" id="destinataire">
+  </div>
+  <div class="form-group col-md-6">
+    <label><strong>Telephone :</strong> </label>
+    <input  type="text"  class="form-control" formControlName="sms" id="sms">
+  </div>
+    
+    <hr>
+    <table class="table table-borderless">
+       <thead class="thead-light">
+         <th>Numéro</th>
+         <th>Désignation</th>
+         <th>Destination</th>
+         <th>Poids</th>
+         <th>Total</th>
+         <th>
+           <a class="btn btn-sm btn-success text-white" (click)="AddData(null,1)"><i class="fa fa-plus"></i>Ajouter </a>
+         </th>
+       </thead>
+       <tbody>
+         <tr *ngIf="service.list.length==0"  [class.text-danger]="!isValid && service.list.length ==0">
+           <td class="font-italic text-center" colspan="5">
+             Aucune Ligne sélectionnée ...
+           </td>
+         </tr>
+     <tr *ngFor="let item of service.list | paginate: { itemsPerPage: 10, currentPage: p };let i=index;">
+     <td>{{item.num}}</td>  
+   
+    
+     <td>{{item.designation}}</td>
+     <td>{{item.destination}}</td>
+     <td>{{item.poids}}</td>
+   
+     <td>{{item.montant}}</td>
+    
+     <td>
+         <a class="btn btn-sm btn-info text-white" (click)="AddData(i,1)"><i class="fa fa-pencil"></i></a>
+         <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDelete(item,item.id,i)"><i class="fa fa-trash"></i></a>
+     </td>
+   </tr>
+     </table>
+     <pagination-controls (pageChange)="p = $event"></pagination-controls>
+       
+           <div class="col-sm-4 mb-3 mb-sm-0">
+           <div class="form-group">
+               <label>Total  : </label>
+               <input type="text" class="form-control" id="total" formControlName="total" readonly>
+           </div>
+           </div> 
+       
+     <div class="form-group">
+       <button  class="btn btn-dark" (click)="onSubmit()"><i class="fa fa-database"></i> Submit</button>
+
+       <a class="btn btn-outline-dark ml-1" routerLink="/bons"><i class="fa fa-plus-square"></i> Liste </a>
+    

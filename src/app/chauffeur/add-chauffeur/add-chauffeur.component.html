@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+    <h1>Gestion Chauffeur</h1>
+  </mat-toolbar>
+  <div   class="col-md-20 col-ms-offset-2">
+    <form [formGroup]="this.crudApi.formData" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="id" id="id">
+        <div class="form-group col-md-6">
+        <label>Matricule </label>
+        <input type="text" class="form-control" formControlName="mat" id="mat" placeholder="Matricule">
+      </div>
+      <div class="form-group">
+        <label>Nom</label>
+        <input type="text" class="form-control" formControlName="nom" id="nom" placeholder="Nom">
+      </div>
+      <div class="form-group">
+        <label>Adresse</label>
+        <input type="text" class="form-control" formControlName="libelle" id="libelle" placeholder="Adresse">
+      </div>
+      <div class="form-group">
+        <label>Grade</label>
+        <input type="text" class="form-control" formControlName="grade" id="grade" placeholder="Grade">
+      </div>
+      <div class="form-group">
+        <label>Destination</label>
+        <input type="text" class="form-control" formControlName="destination" id="destination" placeholder="Destination">
+      </div>
+      <div class="form-group">
+        <label>Numero de Telephone</label>
+        <input type="text" class="form-control" formControlName="tel" id="tel" placeholder="Numero de Telephone">
+      </div>
+      <div class="form-group">
+        <label>Agence</label>
+        <input type="text" class="form-control" formControlName="agence" id="agence" placeholder="Agence">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Direction</label>
+        <select class="form-control" formControlName="direction" id="direction" >
+            <option value="0">-Select-</option>
+            <option *ngFor="let item of DirectionList" value="{{item.libelle}}">{{item.libelle}}</option>
+       </select>    
+    </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label>Login</label>
+        <input type="text" class="form-control" formControlName="login" id="login" placeholder="Login">
+      </div>
+      <div class="form-group">
+        <label>Mot de passe</label>
+        <input type="text" class="form-control" formControlName="pwd" id="pwd" placeholder="mot de passe">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+        <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+     </div>
+   </form>
+  </div>

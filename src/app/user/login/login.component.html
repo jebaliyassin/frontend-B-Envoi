@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row justify-content-center">
+    
+    <div class="col-lg-4 justify-content-center">
+      <img src="assets/img/logo.png" class="img-circle " alt="User Image">
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+      
+      <div class="control-group">
+      <div class="dev">
+        <mat-card class="card" align="center">
+          <mat-toolbar color="bg">
+           <h1>User Login</h1> 
+          </mat-toolbar>
+          <hr>
+          <mat-card-content>
+        <div class="container">
+          
+         <form  [formGroup]="this.loginForm">
+        <div class="controls">
+          <div class="main_input_box">
+            <label>Login</label> 
+            <span class="add-on bg_lg"><i class="icon-user"> </i></span>
+            <input type="text" class="form-control sty1"  id="username" formControlName="username" placeholder="Taper  your login" required>
+         </div>
+      
+          <div class="form-group">
+            <label for="Password">Password</label> 
+            <div class="controls">
+              <div class="main_input_box">
+                  <span class="add-on bg_ly"><i class="icon-lock"></i></span>
+                  <input type="password" class="form-control sty1"  id="password" formControlName="password" placeholder="Taper your Passward" required> 
+           </div>  
+            </div>
+          </div>
+          
+          <div   class="form-actions">
+            <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Lost password?</a></span>
+            <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Remember Me</a></span>
+            <span class="pull-left"><a href="/register" class="flip-link btn btn-info" id="to-recover">Create Account</a></span>
+            <span class="pull-right"><a type="submit"  class="btn btn-success" (click)="login()"> Login</a></span>
+            
+        </div>
+        
+        </div>
+      </form>
+        </div>
+          </mat-card-content>
+        </mat-card>
+        </div>
+      
+      </div>
+      
+      </div>
+    
+    </div>
+    
+    

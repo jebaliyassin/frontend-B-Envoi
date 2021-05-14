@@ -1,0 +1,45 @@
+<h4 class="dislay-4">Ldepot </h4>
+<hr>
+<form #form="ngForm" autocomplete="off"  (submit)="onSubmit(form)">
+  <input type="hidden" name="id" #id="ngModel" [(ngModel)]="formData.id">
+  
+   
+    <div class="form-group">
+      <label>Ligne : </label>
+      <div class="input-group">
+            <input class="form-control" name="num" #num="ngModel" [(ngModel)]="formData.num">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Désignation : </label>
+      <div class="input-group">
+            <input class="form-control" name="designation" #libelle="ngModel" [(ngModel)]="formData.designation">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Destination </label>
+      <select  class="form-control" name="destination" #destination ="ngModel" [(ngModel)]="formData.destination" 
+       (change)="selectPrice($event.target)">
+          <option value="0">-Select-</option>
+          <option *ngFor="let item of destinationList" value="{{item.libelle}}">{{item.libelle}}</option>
+     </select>
+  </div>
+ <div class="form-group">
+    <label>Poids : </label>
+    <div class="input-group">
+          <input class="form-control" name="poids" #poids="ngModel" [(ngModel)]="formData.poids" (keyup)="calcul()" >
+    </div>
+  </div>
+  
+
+  
+    <div class="form-group">
+      <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
+      <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
+    </div>
+  
+</form>
+
+

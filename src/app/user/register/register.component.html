@@ -1,0 +1,100 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+    
+    <div class="col-lg-4 justify-content-center">
+      <img src="assets/img/logo.png" class="img-circle " alt="User Image">
+    </div>
+    
+    <div class="control-group">
+    <div class="dev">
+      <mat-card class="card">
+        <mat-toolbar color="bg">
+         <h1>User Register</h1> 
+        </mat-toolbar>
+        <hr>
+        <mat-card-content  align="center">
+      <div class="container">
+  
+        <form [formGroup]="this.crudApi.formData" (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <label for="login">User Name </label> 
+            <input type="text" class="form-control form-control-user" formControlName="username" id="username"
+             placeholder="Votre Nom"[ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+               <div *ngIf="f.username.errors.required">userName is required</div>
+               <div *ngIf="f.username.errors.minlength">name must be at least 5 characters</div>
+           
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="login">Email :  </label> 
+            <input type="text" class="form-control form-control-user" id="email" formControlName="email"
+             placeholder="Votre Email"[ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+               <div *ngIf="f.email.errors.required">libelle is required</div>
+               <div *ngIf="f.email.errors.minlength">code must be at least 6 characters</div>
+              
+          </div>
+          </div>
+          <div class="form-group">
+            
+              <label>Role</label>
+              <select formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                  <option value=""></option>
+                  <option value="ADMIN">Administrateur</option>
+                  <option value="userName">User</option>
+                 
+              </select>
+              <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                  <div *ngIf="f.role.errors.required">Title is required</div>
+              </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col">
+                <label>Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="form-group col">
+                <label>Confirm Password</label>
+                <input type="password" formControlName="pwdd" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pwdd.errors }" />
+                <div *ngIf="submitted && f.pwdd.errors" class="invalid-feedback">
+                    <div *ngIf="f.pwdd.errors.required">Confirm Password is required</div>
+                    <div *ngIf="f.pwdd.errors.mustMatch">Passwords must match</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-check">
+       
+          <span class="pull-left"> <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"  /></span>
+            <span class="pull-left">  <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label></span>
+           
+          
+        </div>
+  
+         
+          <div   class="form-actions">
+            <span class="pull-left"><a href="#" class="flip-link btn btn-info"  (click)="onReset()">Cancel</a></span>
+               <span class="pull-right"><button  class="btn btn-success" > Register</button></span>
+       
+            
+        </div>
+        </form>
+        
+      </div>
+        </mat-card-content>
+      </mat-card>
+      </div>
+    
+    </div>
+    
+    </div>
+  
+  </div>
+  
+  
